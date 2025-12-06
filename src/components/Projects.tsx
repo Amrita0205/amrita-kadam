@@ -1,6 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Play } from "lucide-react";
+import { ExternalLink, Github, Youtube } from "lucide-react";
+import thumbnailCareerAdvisor from "@/assets/thumbnail-career-advisor.png";
+import thumbnailNss from "@/assets/thumbnail-nss.png";
 
 const projects = [
   {
@@ -10,6 +12,7 @@ const projects = [
     tech: ["Python", "LangChain", "LangGraph", "Groq", "ChromaDB", "PostgreSQL"],
     github: "https://github.com/anandn1/career-advisor",
     demo: "https://youtu.be/56Xtd1PNetw",
+    thumbnail: thumbnailCareerAdvisor,
     highlights: [
       "Autonomous agents for job-market analysis, resume optimization, skill-gap detection",
       "Vector-based retrieval using ChromaDB and Gemma 300M embeddings",
@@ -23,6 +26,7 @@ const projects = [
       "Full-stack web application to manage student participation hours for NSS events. Features an admin portal for hour allocation and Google authentication integration.",
     tech: ["Next.js", "MongoDB", "Google OAuth"],
     demo: "https://youtu.be/GUeC_hvlNzo",
+    thumbnail: thumbnailNss,
     highlights: [
       "Hour tracking system based on event participation",
       "Admin-only portal for hour allocation",
@@ -84,18 +88,28 @@ const Projects = () => {
                   index % 2 === 1 ? "lg:text-right" : ""
                 }`}
               >
-                {/* Project Image/Preview */}
+                {/* Project Image/Preview with Thumbnail */}
                 <div
                   className={`lg:col-span-7 ${
                     index % 2 === 1 ? "lg:order-2 lg:col-start-6" : ""
                   }`}
                 >
                   <div className="relative group">
-                    <div className="glass-card glow-border aspect-video overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 group-hover:opacity-0 transition-opacity duration-300" />
-                      <div className="w-full h-full bg-muted/50 flex items-center justify-center">
-                        <span className="text-4xl font-bold gradient-text">{project.title.charAt(0)}</span>
-                      </div>
+                    <div className="glass-card glow-border aspect-video overflow-hidden rounded-xl">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 group-hover:opacity-0 transition-opacity duration-300 z-10" />
+                      {project.thumbnail ? (
+                        <img
+                          src={project.thumbnail}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-muted/50 flex items-center justify-center">
+                          <span className="text-4xl font-bold gradient-text">
+                            {project.title.charAt(0)}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -125,25 +139,28 @@ const Projects = () => {
                       </ul>
                     )}
                   </div>
-                  <div className={`flex flex-wrap gap-2 mb-4 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                  <div className={`flex flex-wrap gap-2 mb-6 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-3 py-1 text-sm font-mono text-primary bg-primary/10 rounded-full"
+                        className="px-3 py-1 text-sm font-mono text-primary bg-primary/10 rounded-full border border-primary/30"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
+                  
+                  {/* Enhanced Links Section */}
                   <div className={`flex gap-4 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                     {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-muted/50 hover:bg-primary/20 border border-primary/30 hover:border-primary rounded-lg text-foreground hover:text-primary transition-all duration-300 group"
                       >
-                        <Github size={22} />
+                        <Github size={18} className="group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">GitHub</span>
                       </a>
                     )}
                     {project.demo && (
@@ -151,9 +168,10 @@ const Projects = () => {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500 rounded-lg text-foreground hover:text-red-400 transition-all duration-300 group"
                       >
-                        <Play size={22} />
+                        <Youtube size={18} className="text-red-500 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">Demo Video</span>
                       </a>
                     )}
                     {project.live && (
@@ -161,9 +179,10 @@ const Projects = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-secondary/10 hover:bg-secondary/20 border border-secondary/30 hover:border-secondary rounded-lg text-foreground hover:text-secondary transition-all duration-300 group"
                       >
-                        <ExternalLink size={22} />
+                        <ExternalLink size={18} className="group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">Live Site</span>
                       </a>
                     )}
                   </div>
@@ -202,9 +221,10 @@ const Projects = () => {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="flex items-center gap-1 px-2 py-1 rounded bg-muted/50 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-all"
                         >
-                          <Github size={20} />
+                          <Github size={16} />
+                          <span className="text-xs">Code</span>
                         </a>
                       )}
                       {project.live && (
@@ -212,9 +232,10 @@ const Projects = () => {
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="flex items-center gap-1 px-2 py-1 rounded bg-muted/50 hover:bg-secondary/20 text-muted-foreground hover:text-secondary transition-all"
                         >
-                          <ExternalLink size={20} />
+                          <ExternalLink size={16} />
+                          <span className="text-xs">Live</span>
                         </a>
                       )}
                     </div>
