@@ -57,13 +57,13 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-center"
           >
-            <a
+            {/* <a
               href="mailto:amrita0205kadam@gmail.com"
               className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-base sm:text-lg"
             >
               <Send size={18} className="sm:w-5 sm:h-5" />
               Say Hello
-            </a>
+            </a> */}
           </motion.div>
 
           {/* Social Links */}

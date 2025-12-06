@@ -13,7 +13,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Amrita Kadam | Software Developer & AI Engineer</title>
+        <title>Amrita Kadam | AI Engineer</title>
         <meta
           name="description"
           content="Amrita Kadam - B.Tech CSE student at IIIT Raichur specializing in Agentic AI, Full-Stack Development, and Machine Learning. Backend Developer Intern at TerraBiz."
@@ -21,7 +21,7 @@ const Index = () => {
         <meta property="og:title" content="Amrita Kadam | Portfolio" />
         <meta
           property="og:description"
-          content="Software Developer & AI Engineer specializing in Agentic Systems, LangChain, and Full-Stack Development."
+          content=" AI Engineer specializing in Agentic Systems, LangChain, and Full-Stack Development."
         />
       </Helmet>
 

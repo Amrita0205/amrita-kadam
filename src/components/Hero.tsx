@@ -42,7 +42,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl sm:text-2xl md:text-4xl font-semibold text-muted-foreground mb-4 md:mb-6"
             >
-              I build things for the web.
+              I build things for the humanity.
             </motion.h2>
 
             <motion.p
@@ -53,8 +53,8 @@ const Hero = () => {
             >
               B.Tech CSE student at IIIT Raichur specializing in{" "}
               <span className="text-primary">Agentic AI</span>,{" "}
-              <span className="text-secondary">Full-Stack Development</span>, and{" "}
-              <span className="text-primary">Machine Learning</span>. 
+              <span className="text-primary">Machine Learning</span>, 
+              <span className="text-secondary">Full-Stack Development</span>. and{" "}
               Passionate about building innovative solutions.
             </motion.p>
 

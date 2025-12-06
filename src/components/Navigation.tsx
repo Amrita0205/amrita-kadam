@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
+import ResumePDF from "../assets/Resume.pdf";
 const navItems = [
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
@@ -67,7 +67,7 @@ const Navigation = () => {
                 transition={{ delay: 0.8 }}
               >
                 <a
-                  href="https://drive.google.com/file/d/YOUR_RESUME_ID/view"
+                  href={ResumePDF}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-sm font-medium"

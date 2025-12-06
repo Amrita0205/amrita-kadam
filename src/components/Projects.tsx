@@ -9,7 +9,14 @@ const projects = [
     title: "Agentic AI Career Advisor",
     description:
       "Multi-agent AI system for personalized career guidance using LangGraph and Groq LLMs, enabling real-time job analysis and candidate feedback. Selected by IIIT Dharwad faculty for collaboration with a perfect 10/10 score.",
-    tech: ["Python", "LangChain", "LangGraph", "Groq", "ChromaDB", "PostgreSQL"],
+    tech: [
+      "Python",
+      "LangChain",
+      "LangGraph",
+      "Groq",
+      "ChromaDB",
+      "PostgreSQL",
+    ],
     github: "https://github.com/anandn1/career-advisor",
     demo: "https://youtu.be/56Xtd1PNetw",
     thumbnail: thumbnailCareerAdvisor,
@@ -35,13 +42,16 @@ const projects = [
     featured: true,
   },
   {
-    title: "ISS Real-Time Tracker",
+    title: "LoveNote",
     description:
-      "Real-time International Space Station tracker built during the ISS Coding Hackathon. Placed in Top 50 among 1,500+ participants.",
-    tech: ["Node.js", "Leaflet.js", "MongoDB", "Socket.io"],
+      "Simple CRUD notes web app — create, read, update and delete notes. Deployed on Render.",
+    tech: ["Node.js", "Express", "MongoDB"],
+    github: "https://github.com/Amrita0205/LoveNote",
+    live: "https://lovenote.onrender.com",
     highlights: [
-      "Live ISS position tracking on interactive map",
-      "Real-time data updates using WebSockets",
+      "Full CRUD functionality for notes",
+      "Persistent storage with MongoDB",
+      "Deployed to Render for easy sharing"
     ],
     featured: false,
   },
@@ -51,6 +61,17 @@ const projects = [
       "Official website for the Code Conflux Hackathon organized by CodeSoc at IIIT Raichur, showcasing innovative student projects.",
     tech: ["React", "Tailwind CSS", "Vercel"],
     live: "https://code-conflux-szk5-amrita0205s-projects.vercel.app/",
+    featured: false,
+  },
+  {
+    title: "ISS Real-Time Tracker",
+    description:
+      "Real-time International Space Station tracker built during the ISS Coding Hackathon. Placed in Top 50 among 1,500+ participants.",
+    tech: ["Node.js", "Leaflet.js", "MongoDB", "Socket.io"],
+    highlights: [
+      "Live ISS position tracking on interactive map",
+      "Real-time data updates using WebSockets",
+    ],
     featured: false,
   },
 ];
@@ -88,15 +109,18 @@ const Projects = () => {
                   index % 2 === 1 ? "lg:text-right" : ""
                 }`}
               >
-                {/* Project Image/Preview with Thumbnail */}
+                {/* Project Image/Preview */}
                 <div
                   className={`w-full lg:col-span-7 ${
                     index % 2 === 1 ? "lg:order-2 lg:col-start-6" : ""
                   }`}
                 >
                   <div className="relative group">
-                    <div className="glass-card glow-border aspect-video overflow-hidden rounded-xl">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 group-hover:opacity-0 transition-opacity duration-300 z-10" />
+                    <div className="glass-card glow-border aspect-video overflow-hidden rounded-xl relative">
+                      
+                      {/* FIXED: Overlay does NOT block clicks */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 group-hover:opacity-0 transition-opacity duration-300 z-10 pointer-events-none" />
+
                       {project.thumbnail ? (
                         <img
                           src={project.thumbnail}
@@ -122,16 +146,25 @@ const Projects = () => {
                       : "lg:col-start-6"
                   } lg:row-start-1`}
                 >
-                  <p className="text-primary font-mono text-xs sm:text-sm mb-2">Featured Project</p>
+                  <p className="text-primary font-mono text-xs sm:text-sm mb-2">
+                    Featured Project
+                  </p>
                   <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 md:mb-4">
                     {project.title}
                   </h3>
+
                   <div className="glass-card p-4 sm:p-6 mb-4">
-                    <p className="text-muted-foreground text-sm sm:text-base">{project.description}</p>
+                    <p className="text-muted-foreground text-sm sm:text-base">
+                      {project.description}
+                    </p>
+
                     {project.highlights && (
                       <ul className="mt-3 md:mt-4 space-y-2 hidden sm:block">
                         {project.highlights.map((h, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                          <li
+                            key={i}
+                            className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
+                          >
                             <span className="text-primary mt-1">▹</span>
                             {h}
                           </li>
@@ -139,7 +172,13 @@ const Projects = () => {
                       </ul>
                     )}
                   </div>
-                  <div className={`flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+
+                  {/* Tech Stack */}
+                  <div
+                    className={`flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6 ${
+                      index % 2 === 1 ? "lg:justify-end" : ""
+                    }`}
+                  >
                     {project.tech.map((t) => (
                       <span
                         key={t}
@@ -149,40 +188,52 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  
-                  {/* Enhanced Links Section */}
-                  <div className={`flex flex-wrap gap-2 sm:gap-3 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+
+                  {/* Links - FIXED WITH z-20 */}
+                  <div
+                    className={`flex flex-wrap gap-2 sm:gap-3 ${
+                      index % 2 === 1 ? "lg:justify-end" : ""
+                    }`}
+                  >
                     {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-muted/50 hover:bg-primary/20 border border-primary/30 hover:border-primary rounded-lg text-foreground hover:text-primary transition-all duration-300 group"
+                        className="relative z-20 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-muted/50 hover:bg-primary/20 border border-primary/30 hover:border-primary rounded-lg text-foreground hover:text-primary transition-all duration-300 group"
                       >
-                        <Github size={16} className="group-hover:scale-110 transition-transform" />
-                        <span className="text-xs sm:text-sm font-medium">GitHub</span>
+                        <Github size={16} />
+                        <span className="text-xs sm:text-sm font-medium">
+                          GitHub
+                        </span>
                       </a>
                     )}
+
                     {project.demo && (
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500 rounded-lg text-foreground hover:text-red-400 transition-all duration-300 group"
+                        className="relative z-20 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500 rounded-lg text-foreground hover:text-red-400 transition-all duration-300 group"
                       >
-                        <Youtube size={16} className="text-red-500 group-hover:scale-110 transition-transform" />
-                        <span className="text-xs sm:text-sm font-medium">Demo</span>
+                        <Youtube size={16} />
+                        <span className="text-xs sm:text-sm font-medium">
+                          Demo
+                        </span>
                       </a>
                     )}
+
                     {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-secondary/10 hover:bg-secondary/20 border border-secondary/30 hover:border-secondary rounded-lg text-foreground hover:text-secondary transition-all duration-300 group"
+                        className="relative z-20 flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-secondary/10 hover:bg-secondary/20 border border-secondary/30 hover:border-secondary rounded-lg text-foreground hover:text-secondary transition-all duration-300 group"
                       >
-                        <ExternalLink size={16} className="group-hover:scale-110 transition-transform" />
-                        <span className="text-xs sm:text-sm font-medium">Live</span>
+                        <ExternalLink size={16} />
+                        <span className="text-xs sm:text-sm font-medium">
+                          Live
+                        </span>
                       </a>
                     )}
                   </div>
@@ -200,6 +251,7 @@ const Projects = () => {
           <h3 className="text-lg sm:text-xl font-bold text-center mb-6 sm:mb-8 text-muted-foreground">
             Other Noteworthy Projects
           </h3>
+
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
             {projects
               .filter((p) => !p.featured)
@@ -209,13 +261,16 @@ const Projects = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                  className="glass-card glow-border p-4 sm:p-6 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-2"
+                  className="glass-card glow-border p-4 sm:p-6 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 relative"
                 >
                   <div className="flex justify-between items-start mb-3 sm:mb-4">
                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <span className="text-primary text-base sm:text-lg">📁</span>
+                      <span className="text-primary text-base sm:text-lg">
+                        📁
+                      </span>
                     </div>
-                    <div className="flex gap-2 sm:gap-3">
+
+                    <div className="flex gap-2 sm:gap-3 relative z-20">
                       {project.github && (
                         <a
                           href={project.github}
@@ -223,10 +278,11 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 px-2 py-1 rounded bg-muted/50 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-all"
                         >
-                          <Github size={14} className="sm:w-4 sm:h-4" />
+                          <Github size={14} />
                           <span className="text-xs">Code</span>
                         </a>
                       )}
+
                       {project.live && (
                         <a
                           href={project.live}
@@ -234,19 +290,27 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 px-2 py-1 rounded bg-muted/50 hover:bg-secondary/20 text-muted-foreground hover:text-secondary transition-all"
                         >
-                          <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                          <ExternalLink size={14} />
                           <span className="text-xs">Live</span>
                         </a>
                       )}
                     </div>
                   </div>
+
                   <h4 className="text-base sm:text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h4>
-                  <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4">{project.description}</p>
+
+                  <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4">
+                    {project.description}
+                  </p>
+
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <span key={t} className="text-xs font-mono text-muted-foreground">
+                      <span
+                        key={t}
+                        className="text-xs font-mono text-muted-foreground"
+                      >
                         {t}
                       </span>
                     ))}
