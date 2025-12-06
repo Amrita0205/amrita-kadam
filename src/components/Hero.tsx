@@ -4,17 +4,17 @@ import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-12 md:pt-0 md:pb-0">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl floating" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl floating" style={{ animationDelay: "-3s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-border/20 rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-border/10 rounded-full" />
+        <div className="absolute top-1/4 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-primary/5 rounded-full blur-3xl floating" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 md:w-96 h-48 md:h-96 bg-secondary/5 rounded-full blur-3xl floating" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] border border-border/20 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] border border-border/10 rounded-full" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12">
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left">
             <motion.p
@@ -30,7 +30,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold mb-4"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4"
             >
               <span className="text-foreground">Amrita</span>{" "}
               <span className="gradient-text">Kadam</span>
@@ -40,7 +40,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl md:text-4xl font-semibold text-muted-foreground mb-6"
+              className="text-xl sm:text-2xl md:text-4xl font-semibold text-muted-foreground mb-4 md:mb-6"
             >
               I build things for the web.
             </motion.h2>
@@ -49,7 +49,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8 text-lg"
+              className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-6 md:mb-8 text-base md:text-lg"
             >
               B.Tech CSE student at IIIT Raichur specializing in{" "}
               <span className="text-primary">Agentic AI</span>,{" "}
@@ -106,7 +106,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex-shrink-0 relative"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80">
               {/* Animated ring */}
               <div className="absolute inset-0 rounded-full border-2 border-primary/50 animate-pulse" />
               <div className="absolute -inset-4 rounded-full border border-primary/20" />
