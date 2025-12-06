@@ -15,41 +15,41 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 relative" ref={ref}>
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-16 md:py-24 relative" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
             <span className="gradient-text">01.</span> About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
               I'm a passionate Computer Science student at{" "}
               <span className="text-primary font-medium">IIIT Raichur</span>, driven by the 
               intersection of AI and software development. My journey in tech started with 
               curiosity and has evolved into building real-world applications.
             </p>
             
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
               Currently working as a <span className="text-secondary font-medium">Backend Developer Intern at TerraBiz</span>, 
               where I develop scalable APIs and optimize database architectures. I specialize in 
               <span className="text-primary"> Agentic AI systems</span>, full-stack development, and competitive programming.
             </p>
 
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
               As the <span className="text-secondary font-medium">Tech Coordinator of CodeSoc</span>, 
               I've mentored 150+ students and organized hackathons that bring together innovative minds.
             </p>
@@ -73,7 +73,7 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-2 gap-3 sm:gap-4"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -81,11 +81,11 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="glass-card glow-border p-6 text-center group hover:border-primary/50 transition-all duration-300"
+                className="glass-card glow-border p-4 sm:p-6 text-center group hover:border-primary/50 transition-all duration-300"
               >
-                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-                <div className="text-2xl font-bold text-foreground mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300" />
+                <div className="text-xl sm:text-2xl font-bold text-foreground mb-1">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

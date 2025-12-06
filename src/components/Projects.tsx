@@ -60,22 +60,22 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-24 relative" ref={ref}>
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-16 md:py-24 relative" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
             <span className="gradient-text">03.</span> Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
         </motion.div>
 
         {/* Featured Projects */}
-        <div className="space-y-24 mb-24">
+        <div className="space-y-12 md:space-y-24 mb-16 md:mb-24">
           {projects
             .filter((p) => p.featured)
             .map((project, index) => (
@@ -84,13 +84,13 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative grid lg:grid-cols-12 gap-4 items-center ${
+                className={`relative flex flex-col lg:grid lg:grid-cols-12 gap-4 items-start lg:items-center ${
                   index % 2 === 1 ? "lg:text-right" : ""
                 }`}
               >
                 {/* Project Image/Preview with Thumbnail */}
                 <div
-                  className={`lg:col-span-7 ${
+                  className={`w-full lg:col-span-7 ${
                     index % 2 === 1 ? "lg:order-2 lg:col-start-6" : ""
                   }`}
                 >
@@ -116,22 +116,22 @@ const Projects = () => {
 
                 {/* Project Info */}
                 <div
-                  className={`lg:col-span-6 ${
+                  className={`w-full lg:col-span-6 ${
                     index % 2 === 1
                       ? "lg:order-1 lg:col-start-1"
                       : "lg:col-start-6"
                   } lg:row-start-1`}
                 >
-                  <p className="text-primary font-mono text-sm mb-2">Featured Project</p>
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                  <p className="text-primary font-mono text-xs sm:text-sm mb-2">Featured Project</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 md:mb-4">
                     {project.title}
                   </h3>
-                  <div className="glass-card p-6 mb-4">
-                    <p className="text-muted-foreground">{project.description}</p>
+                  <div className="glass-card p-4 sm:p-6 mb-4">
+                    <p className="text-muted-foreground text-sm sm:text-base">{project.description}</p>
                     {project.highlights && (
-                      <ul className="mt-4 space-y-2">
+                      <ul className="mt-3 md:mt-4 space-y-2 hidden sm:block">
                         {project.highlights.map((h, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
                             <span className="text-primary mt-1">▹</span>
                             {h}
                           </li>
@@ -139,11 +139,11 @@ const Projects = () => {
                       </ul>
                     )}
                   </div>
-                  <div className={`flex flex-wrap gap-2 mb-6 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                  <div className={`flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-3 py-1 text-sm font-mono text-primary bg-primary/10 rounded-full border border-primary/30"
+                        className="px-2 sm:px-3 py-1 text-xs sm:text-sm font-mono text-primary bg-primary/10 rounded-full border border-primary/30"
                       >
                         {t}
                       </span>
@@ -151,16 +151,16 @@ const Projects = () => {
                   </div>
                   
                   {/* Enhanced Links Section */}
-                  <div className={`flex gap-4 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                  <div className={`flex flex-wrap gap-2 sm:gap-3 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                     {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-muted/50 hover:bg-primary/20 border border-primary/30 hover:border-primary rounded-lg text-foreground hover:text-primary transition-all duration-300 group"
+                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-muted/50 hover:bg-primary/20 border border-primary/30 hover:border-primary rounded-lg text-foreground hover:text-primary transition-all duration-300 group"
                       >
-                        <Github size={18} className="group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium">GitHub</span>
+                        <Github size={16} className="group-hover:scale-110 transition-transform" />
+                        <span className="text-xs sm:text-sm font-medium">GitHub</span>
                       </a>
                     )}
                     {project.demo && (
@@ -168,10 +168,10 @@ const Projects = () => {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500 rounded-lg text-foreground hover:text-red-400 transition-all duration-300 group"
+                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 hover:border-red-500 rounded-lg text-foreground hover:text-red-400 transition-all duration-300 group"
                       >
-                        <Youtube size={18} className="text-red-500 group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium">Demo Video</span>
+                        <Youtube size={16} className="text-red-500 group-hover:scale-110 transition-transform" />
+                        <span className="text-xs sm:text-sm font-medium">Demo</span>
                       </a>
                     )}
                     {project.live && (
@@ -179,10 +179,10 @@ const Projects = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-secondary/10 hover:bg-secondary/20 border border-secondary/30 hover:border-secondary rounded-lg text-foreground hover:text-secondary transition-all duration-300 group"
+                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-secondary/10 hover:bg-secondary/20 border border-secondary/30 hover:border-secondary rounded-lg text-foreground hover:text-secondary transition-all duration-300 group"
                       >
-                        <ExternalLink size={18} className="group-hover:scale-110 transition-transform" />
-                        <span className="text-sm font-medium">Live Site</span>
+                        <ExternalLink size={16} className="group-hover:scale-110 transition-transform" />
+                        <span className="text-xs sm:text-sm font-medium">Live</span>
                       </a>
                     )}
                   </div>
@@ -197,10 +197,10 @@ const Projects = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <h3 className="text-xl font-bold text-center mb-8 text-muted-foreground">
+          <h3 className="text-lg sm:text-xl font-bold text-center mb-6 sm:mb-8 text-muted-foreground">
             Other Noteworthy Projects
           </h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
             {projects
               .filter((p) => !p.featured)
               .map((project, index) => (
@@ -209,13 +209,13 @@ const Projects = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                  className="glass-card glow-border p-6 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-2"
+                  className="glass-card glow-border p-4 sm:p-6 group hover:border-primary/50 transition-all duration-300 hover:-translate-y-2"
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <span className="text-primary text-lg">📁</span>
+                  <div className="flex justify-between items-start mb-3 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <span className="text-primary text-base sm:text-lg">📁</span>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-2 sm:gap-3">
                       {project.github && (
                         <a
                           href={project.github}
@@ -223,7 +223,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 px-2 py-1 rounded bg-muted/50 hover:bg-primary/20 text-muted-foreground hover:text-primary transition-all"
                         >
-                          <Github size={16} />
+                          <Github size={14} className="sm:w-4 sm:h-4" />
                           <span className="text-xs">Code</span>
                         </a>
                       )}
@@ -234,16 +234,16 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 px-2 py-1 rounded bg-muted/50 hover:bg-secondary/20 text-muted-foreground hover:text-secondary transition-all"
                         >
-                          <ExternalLink size={16} />
+                          <ExternalLink size={14} className="sm:w-4 sm:h-4" />
                           <span className="text-xs">Live</span>
                         </a>
                       )}
                     </div>
                   </div>
-                  <h4 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h4 className="text-base sm:text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h4>
-                  <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+                  <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
                       <span key={t} className="text-xs font-mono text-muted-foreground">

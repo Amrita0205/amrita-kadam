@@ -34,28 +34,28 @@ const Skills = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 relative" ref={ref}>
-      <div className="container mx-auto px-6">
+    <section id="skills" className="py-16 md:py-24 relative" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
             <span className="gradient-text">04.</span> Skills
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: catIndex * 0.1 }}
-              className="glass-card glow-border p-6"
+              className="glass-card glow-border p-4 sm:p-6"
             >
               <h3 className={`text-lg font-bold mb-4 ${category.color === "primary" ? "text-primary" : "text-secondary"}`}>
                 {category.title}
@@ -92,7 +92,7 @@ const Skills = () => {
           <h3 className="text-xl font-bold text-center mb-8 text-muted-foreground">
             Competitive Programming
           </h3>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             {[
               { platform: "LeetCode", problems: "500+", link: "https://leetcode.com/u/Amrita0205/", color: "text-amber-500" },
               { platform: "Codeforces", problems: "200+", link: "https://codeforces.com/profile/Amrita_0205", color: "text-blue-500" },
@@ -107,9 +107,9 @@ const Skills = () => {
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="glass-card glow-border px-6 py-4 flex items-center gap-4 group"
+                className="glass-card glow-border px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3 sm:gap-4 group"
               >
-                <span className={`text-2xl font-bold ${item.color}`}>{item.problems}</span>
+                <span className={`text-xl sm:text-2xl font-bold ${item.color}`}>{item.problems}</span>
                 <div>
                   <span className="text-foreground font-medium group-hover:text-primary transition-colors">
                     {item.platform}
