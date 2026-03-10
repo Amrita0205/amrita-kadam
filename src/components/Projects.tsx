@@ -3,8 +3,52 @@ import { useRef } from "react";
 import { ExternalLink, Github, Youtube } from "lucide-react";
 import thumbnailCareerAdvisor from "@/assets/thumbnail-career-advisor.png";
 import thumbnailNss from "@/assets/thumbnail-nss.png";
+import thumbnailBitLens from "@/assets/thumbnail-bit-lens.png";
+import thumbnailCoinSmith from "@/assets/thumbnail-coin-smith.png";
 
 const projects = [
+  {
+    title: "Bit Lens — Bitcoin Transaction Autopsy",
+    description:
+      "Summer of Bitcoin Week 1: A dual-mode Bitcoin transaction analyzer — CLI tool producing machine-checkable JSON reports and a web visualizer that explains Bitcoin transactions to non-technical users with diagrams, value-flow graphs, and plain-English narration.",
+    tech: [
+      "Python",
+      "Bitcoin Protocol",
+      "BIP-141 SegWit",
+      "Script Parsing",
+      "Block Parsing",
+    ],
+    github: "https://github.com/Amrita0205/Summer-of-Bitcoin-week1-BIT-LENS-challenge",
+    demo: "https://www.youtube.com/watch?v=arhDI3FLk-4",
+    thumbnail: thumbnailBitLens,
+    highlights: [
+      "Parses raw transactions: inputs, outputs, fees, script types, timelocks, RBF, and SegWit savings",
+      "Block-mode parser supporting Bitcoin Core blk*.dat + rev*.dat files with XOR decode",
+      "Web visualizer with value-flow diagrams, SegWit discount breakdown, and tooltips for beginners",
+    ],
+    featured: true,
+  },
+  {
+    title: "Coin Smith — PSBT Transaction Builder",
+    description:
+      "Summer of Bitcoin Week 2: A safe BIP-174 PSBT transaction builder — selects UTXOs, constructs unsigned Bitcoin transactions, computes dust-safe fees and change, and exports a machine-checkable JSON report with a web UI to visualize the result.",
+    tech: [
+      "Python",
+      "Bitcoin Protocol",
+      "BIP-174 PSBT",
+      "Coin Selection",
+      "RBF / Locktime",
+    ],
+    github: "https://github.com/Amrita0205/Summer-of-Bitcoin-week2-COIN-SMITH-challenge",
+    demo: "https://www.youtube.com/watch?v=UiFWWvqCxC4",
+    thumbnail: thumbnailCoinSmith,
+    highlights: [
+      "Greedy coin selection with accurate vbytes estimation, dust-safe change logic, and fee-boundary handling",
+      "Full RBF, absolute locktime, and anti-fee-sniping construction per BIP-125 and Bitcoin Core behavior",
+      "Web UI visualizing selected inputs, outputs, fee breakdown, warnings, and PSBT export",
+    ],
+    featured: true,
+  },
   {
     title: "Agentic AI Career Advisor",
     description:
@@ -61,17 +105,6 @@ const projects = [
       "Official website for the Code Conflux Hackathon organized by CodeSoc at IIIT Raichur, showcasing innovative student projects.",
     tech: ["React", "Tailwind CSS", "Vercel"],
     live: "https://code-conflux-szk5-amrita0205s-projects.vercel.app/",
-    featured: false,
-  },
-  {
-    title: "ISS Real-Time Tracker",
-    description:
-      "Real-time International Space Station tracker built during the ISS Coding Hackathon. Placed in Top 50 among 1,500+ participants.",
-    tech: ["Node.js", "Leaflet.js", "MongoDB", "Socket.io"],
-    highlights: [
-      "Live ISS position tracking on interactive map",
-      "Real-time data updates using WebSockets",
-    ],
     featured: false,
   },
 ];

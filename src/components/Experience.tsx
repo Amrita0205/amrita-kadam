@@ -4,6 +4,18 @@ import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 const experiences = [
   {
+    title: "Bootcamp Participant",
+    company: "Summer of Bitcoin",
+    companyUrl: "https://www.summerofbitcoin.org/",
+    location: "Remote",
+    period: "2026",
+    description: [
+      "Selected for the Summer of Bitcoin Bootcamp — a competitive global program teaching Bitcoin protocol and open-source development",
+      "Built Bit Lens: a dual-mode Bitcoin transaction analyzer with CLI (machine-checkable JSON) and a web visualizer explaining transactions to non-technical users",
+      "Built Coin Smith: a safe BIP-174 PSBT transaction builder with greedy coin selection, dust-safe change logic, and RBF/locktime support",
+    ],
+  },
+  {
     title: "Back End Developer Intern",
     company: "TerraBiz",
     location: "Remote",
@@ -68,7 +80,13 @@ const Experience = () => {
                       <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                         {exp.title}
                       </h3>
-                      <p className="text-secondary font-medium text-sm sm:text-base">{exp.company}</p>
+                      {exp.companyUrl ? (
+                        <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="text-secondary font-medium text-sm sm:text-base hover:underline">
+                          {exp.company}
+                        </a>
+                      ) : (
+                        <p className="text-secondary font-medium text-sm sm:text-base">{exp.company}</p>
+                      )}
                     </div>
                     <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2 sm:gap-1 text-xs sm:text-sm text-muted-foreground">
                       <div className="flex items-center gap-1 sm:gap-2">

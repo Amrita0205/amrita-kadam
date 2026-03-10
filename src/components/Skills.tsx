@@ -23,9 +23,14 @@ const skillCategories = [
     color: "secondary",
   },
   {
+    title: "Bitcoin Protocol",
+    skills: ["Bitcoin Protocol", "BIP-141 SegWit", "BIP-174 PSBT", "Script Parsing", "Block Parsing", "Coin Selection", "RBF / Locktime"],
+    color: "primary",
+  },
+  {
     title: "Tools & Deployment",
     skills: ["Git", "GitHub", "Postman", "Vercel", "Render"],
-    color: "primary",
+    color: "secondary",
   },
 ];
 

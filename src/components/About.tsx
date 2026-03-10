@@ -69,6 +69,16 @@ const About = () => {
               together innovative minds.
             </p>
 
+            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+              Currently a{" "}
+              <span className="text-primary font-medium">
+                Summer of Bitcoin Bootcamp participant
+              </span>
+              , where I'm diving deep into Bitcoin protocol engineering — building
+              transaction analyzers, PSBT constructors, and block parsers from
+              scratch in Python.
+            </p>
+
             <div className="pt-4">
               <p className="text-foreground font-medium mb-3">
                 Relevant Coursework:
@@ -77,6 +87,7 @@ const About = () => {
                 {[
                   "Agentic AI",
                   "Machine Learning",
+                  "Bitcoin Protocol",
                   "Computer Networks",
                   "DSA",
                   "Bioinformatics",

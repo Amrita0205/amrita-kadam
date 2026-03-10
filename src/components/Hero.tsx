@@ -53,8 +53,9 @@ const Hero = () => {
             >
               B.Tech CSE student at IIIT Raichur specializing in{" "}
               <span className="text-primary">Agentic AI</span>,{" "}
-              <span className="text-primary">Machine Learning</span>, 
-              <span className="text-secondary">Full-Stack Development</span>. and{" "}
+              <span className="text-primary">Machine Learning</span>,{" "}
+              <span className="text-secondary">Full-Stack Development</span>, and{" "}
+              <span className="text-primary">Bitcoin Protocol</span>.{" "}
               Passionate about building innovative solutions.
             </motion.p>
 
