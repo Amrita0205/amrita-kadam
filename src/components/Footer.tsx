@@ -15,7 +15,7 @@ const Footer = () => {
             Designed & Built with <Heart size={14} className="text-primary" /> by{" "}
             <span className="text-foreground font-medium">Amrita Kadam</span>
           </p>
-          <p className="text-muted-foreground/60 text-xs mt-2">© 2024 All Rights Reserved</p>
+          <p className="text-muted-foreground/60 text-xs mt-2">© 2026 All Rights Reserved</p>
         </motion.div>
       </div>
     </footer>
