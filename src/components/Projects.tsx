@@ -72,6 +72,45 @@ const projects = [
     featured: true,
   },
   {
+    title: "Blog Writing AI Agent — Multi-Agent Content Pipeline",
+    description:
+      "A multi-agent CrewAI pipeline with four specialized agents — Researcher, Writer, Editor, and Social Media Manager — that autonomously researches a topic and produces a publication-ready blog post along with Twitter/X and LinkedIn content.",
+    tech: [
+      "Python",
+      "CrewAI",
+      "Groq LLMs",
+      "Multi-Agent Systems",
+      "LLM Orchestration",
+    ],
+    github: "https://github.com/Amrita0205/Blog_writing_AI_agent",
+    highlights: [
+      "Four-agent workflow: research → drafting → editing → social distribution, fully autonomous end to end",
+      "Powered by Groq (llama-3.3-70b-versatile) for fast inference",
+      "Resolved a known litellm/openai dependency conflict in CrewAI for stable local execution",
+    ],
+    featured: true,
+  },
+  {
+    title: "MLOps Prediction API — End-to-End ML Pipeline",
+    description:
+      "A production-grade ML pipeline with MLflow experiment tracking, a versioned model registry, and a FastAPI REST endpoint for serving predictions — mirroring real-world MLOps infrastructure. Achieved 97.5% test accuracy.",
+    tech: [
+      "Python",
+      "MLflow",
+      "FastAPI",
+      "scikit-learn",
+      "Model Registry",
+      "Uvicorn",
+    ],
+    github: "https://github.com/Amrita0205/MLops_prediction_iris_dataset",
+    highlights: [
+      "MLflow experiment tracking with multi-solver comparison (lbfgs, saga, newton-cg)",
+      "Versioned model registry for reproducible promotion from experiment to production",
+      "FastAPI REST endpoint serving the registered model for real-time predictions",
+    ],
+    featured: true,
+  },
+  {
     title: "College NSS Website",
     description:
       "Full-stack web application to manage student participation hours for NSS events. Features an admin portal for hour allocation and Google authentication integration.",
