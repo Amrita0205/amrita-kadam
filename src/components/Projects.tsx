@@ -200,10 +200,23 @@ const Projects = () => {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-muted/50 flex items-center justify-center">
-                          <span className="text-4xl font-bold gradient-text">
+                        <div className="w-full h-full bg-gradient-to-br from-primary/10 via-background to-secondary/10 flex flex-col items-center justify-center gap-3 p-6">
+                          <span className="text-5xl sm:text-6xl font-bold gradient-text">
                             {project.title.charAt(0)}
                           </span>
+                          <span className="font-mono text-xs sm:text-sm text-muted-foreground text-center max-w-xs">
+                            {project.title}
+                          </span>
+                          <div className="flex gap-2 mt-1">
+                            {project.tech.slice(0, 3).map((t) => (
+                              <span
+                                key={t}
+                                className="px-2 py-0.5 text-[10px] font-mono text-primary/70 bg-primary/5 rounded-full border border-primary/20"
+                              >
+                                {t}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
