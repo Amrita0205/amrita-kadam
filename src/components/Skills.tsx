@@ -14,12 +14,12 @@ const skillCategories = [
   },
   {
     title: "AI/ML",
-    skills: ["Machine Learning", "YOLOv8", "OCR", "OpenCV", "Scikit-learn", "NumPy", "Pandas"],
+    skills: ["Machine Learning", "MLflow", "FastAPI", "YOLOv8", "OCR", "OpenCV", "Scikit-learn", "NumPy", "Pandas"],
     color: "primary",
   },
   {
     title: "Agentic Systems",
-    skills: ["LangChain", "LangGraph", "Multi-Agent Systems", "Groq LLMs", "ChromaDB", "Vector Search", "RAG Pipelines"],
+    skills: ["LangChain", "LangGraph", "CrewAI", "Multi-Agent Systems", "Groq LLMs", "ChromaDB", "Vector Search", "RAG Pipelines"],
     color: "secondary",
   },
   {

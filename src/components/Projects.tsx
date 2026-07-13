@@ -5,6 +5,8 @@ import thumbnailCareerAdvisor from "@/assets/thumbnail-career-advisor.png";
 import thumbnailNss from "@/assets/thumbnail-nss.png";
 import thumbnailBitLens from "@/assets/thumbnail-bit-lens.png";
 import thumbnailCoinSmith from "@/assets/thumbnail-coin-smith.png";
+import thumbnailBlogAgent from "@/assets/thumbnail-blog-agent.png";
+import thumbnailMlops from "@/assets/thumbnail-mlops.png";
 
 const projects = [
   {
@@ -83,6 +85,7 @@ const projects = [
       "LLM Orchestration",
     ],
     github: "https://github.com/Amrita0205/Blog_writing_AI_agent",
+    thumbnail: thumbnailBlogAgent,
     highlights: [
       "Four-agent workflow: research → drafting → editing → social distribution, fully autonomous end to end",
       "Powered by Groq (llama-3.3-70b-versatile) for fast inference",
@@ -103,6 +106,7 @@ const projects = [
       "Uvicorn",
     ],
     github: "https://github.com/Amrita0205/MLops_prediction_iris_dataset",
+    thumbnail: thumbnailMlops,
     highlights: [
       "MLflow experiment tracking with multi-solver comparison (lbfgs, saga, newton-cg)",
       "Versioned model registry for reproducible promotion from experiment to production",

@@ -87,6 +87,8 @@ const About = () => {
                 {[
                   "Agentic AI",
                   "Machine Learning",
+                  "Deep Learning",
+                  "AR / VR",
                   "Bitcoin Protocol",
                   "Computer Networks",
                   "DSA",
