@@ -23,6 +23,7 @@ const experiences: ExperienceItem[] = [
     description: [
       "Reproduced MultiHaluDet (ACL 2026 workshop), which detects LLM hallucinations by probing a frozen model's hidden states: matched its HaluEval result on Mistral-7B (AUROC 0.985 vs. 0.984 reported), then extended it to Qwen2.5-7B, Phi-3.5-mini and Yi-1.5-9B. All four scored 0.985–0.989; the 3.8B Phi-3.5 matched the 7–9B models at half the GPU memory.",
       "Found a validation bug in the released code: a cross-validation seed collision inverted the meta-learner's predictions (AUROC 0.015); decorrelating the folds restored out-of-fold AUROC from 0.41 to 0.98. Added failure accounting and feature health checks so an incompatible model fails loudly instead of producing plausible-looking scores.",
+      "Wrote a GPU meta-learner that trains in 51 s vs. ~50 min for the original ensemble, so many LLMs can be compared.",
     ],
   },
   {
