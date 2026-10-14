@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Award, Code2, Users } from "lucide-react";
+import { Microscope, Crosshair, Gauge, Users } from "lucide-react";
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const stats = [
-    { icon: Code2, value: "500+", label: "DSA Problems Solved" },
-    { icon: Award, value: "Top 1.3%", label: "AlgoUniversity Hackathon" },
-    { icon: GraduationCap, value: "8.51", label: "CGPA" },
-    { icon: Users, value: "150+", label: "Students Mentored" },
+    { icon: Microscope, value: "0.985–0.989", label: "Hallucination-detection AUROC across 4 LLMs" },
+    { icon: Crosshair, value: "0.29 → 0.89", label: "Highlight IoU after fixing a silent failure" },
+    { icon: Gauge, value: "176s → 2.2s", label: "Page extraction latency, Veda AI" },
+    { icon: Users, value: "150+", label: "Students mentored, CodeSoc" },
   ];
 
   return (
@@ -37,46 +37,37 @@ const About = () => {
             className="space-y-4 sm:space-y-6"
           >
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              I'm a passionate Computer Science student at{" "}
-              <span className="text-primary font-medium">IIIT Raichur</span>,
-              driven by the intersection of AI and software development. My
-              journey in tech started with curiosity and has evolved into
-              building real-world applications.
+              I'm a final-year Computer Science student at{" "}
+              <span className="text-primary font-medium">IIIT Raichur</span>{" "}
+              (graduating August 2027) and a{" "}
+              <span className="text-secondary font-medium">
+                mechanistic interpretability research intern at Moleculyst
+              </span>
+              , where I reproduce published LLM hallucination-detection methods
+              and test whether they hold up on other open models.
             </p>
 
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              Currently diving deeper into Machine Learning, having completed my
-              role as a
+              Before that I spent six months as a{" "}
               <span className="text-secondary font-medium">
-                {" "}
                 Backend Developer Intern at TerraBiz
               </span>
-              , where I built scalable APIs, improved data workflows, and
-              contributed to core backend architecture. I work extensively with
-              <span className="text-primary font-medium">
-                {" "}
-                Agentic AI systems
-              </span>
-              , full-stack development, and also enjoy competitive programming.
+              , building production REST APIs in Node.js and Express. My
+              projects ship with evaluation harnesses, and two of my favourite
+              fixes were{" "}
+              <span className="text-primary font-medium">silent failures</span>:
+              a fallback that produced plausible-looking highlights in Veda AI,
+              and a seed collision that inverted a published model's
+              predictions.
             </p>
 
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              As the{" "}
+              As{" "}
               <span className="text-secondary font-medium">
                 Tech Coordinator of CodeSoc
-              </span>
-              , I've mentored 150+ students and organized hackathons that bring
-              together innovative minds.
-            </p>
-
-            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              Currently a{" "}
-              <span className="text-primary font-medium">
-                Summer of Bitcoin Bootcamp participant
-              </span>
-              , where I'm diving deep into Bitcoin protocol engineering — building
-              transaction analyzers, PSBT constructors, and block parsers from
-              scratch in Python.
+              </span>{" "}
+              (2024–2025), I mentored 150+ students in data structures and
+              algorithms and organised the Code Conflux hackathon.
             </p>
 
             <div className="pt-4">
@@ -85,14 +76,15 @@ const About = () => {
               </p>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "Agentic AI",
-                  "Machine Learning",
+                  "Probability and Statistics",
+                  "Linear Algebra",
+                  "Calculus",
+                  "Discrete Mathematics",
+                  "Foundations of Machine Learning",
                   "Deep Learning",
-                  "AR / VR",
-                  "Bitcoin Protocol",
-                  "Computer Networks",
-                  "DSA",
-                  "Bioinformatics",
+                  "Natural Language Processing",
+                  "Agentic AI",
+                  "Data Structures and Algorithms",
                 ].map((course) => (
                   <span
                     key={course}

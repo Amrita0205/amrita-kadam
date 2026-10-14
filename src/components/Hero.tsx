@@ -42,7 +42,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl sm:text-2xl md:text-4xl font-semibold text-muted-foreground mb-4 md:mb-6"
             >
-              I build things for the humanity.
+              I probe language models and build with them.
             </motion.h2>
 
             <motion.p
@@ -51,12 +51,12 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-6 md:mb-8 text-base md:text-lg"
             >
-              B.Tech CSE student at IIIT Raichur specializing in{" "}
-              <span className="text-primary">Agentic AI</span>,{" "}
-              <span className="text-primary">Machine Learning</span>,{" "}
-              <span className="text-secondary">Full-Stack Development</span>, and{" "}
-              <span className="text-primary">Bitcoin Protocol</span>.{" "}
-              Passionate about building innovative solutions.
+              Final-year B.Tech CSE student at IIIT Raichur and{" "}
+              <span className="text-primary">mechanistic interpretability research intern</span> at
+              Moleculyst. I work on{" "}
+              <span className="text-primary">LLM hallucination detection</span>,{" "}
+              <span className="text-secondary">evaluation</span> and{" "}
+              <span className="text-primary">multi-agent systems</span>.
             </motion.p>
 
             {/* Social Links */}

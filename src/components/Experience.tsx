@@ -1,41 +1,52 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, Github } from "lucide-react";
 
-const experiences = [
+type ExperienceItem = {
+  title: string;
+  company: string;
+  companyUrl?: string;
+  location: string;
+  period: string;
+  link?: { label: string; href: string };
+  description: string[];
+};
+
+// Kept word-for-word in sync with the resume (src/assets/Resume.pdf).
+const experiences: ExperienceItem[] = [
   {
-    title: "Bootcamp Participant",
-    company: "Summer of Bitcoin",
-    companyUrl: "https://www.summerofbitcoin.org/",
+    title: "Mechanistic Interpretability Research Intern",
+    company: "Moleculyst",
     location: "Remote",
-    period: "2026",
+    period: "Jul 2026 – Present",
+    link: { label: "Reproduction code and results", href: "https://github.com/Amrita0205/MULTIHALUDET" },
     description: [
-      "Selected for the Summer of Bitcoin Bootcamp — a competitive global program teaching Bitcoin protocol and open-source development",
-      "Built Bit Lens: a dual-mode Bitcoin transaction analyzer with CLI (machine-checkable JSON) and a web visualizer explaining transactions to non-technical users",
-      "Built Coin Smith: a safe BIP-174 PSBT transaction builder with greedy coin selection, dust-safe change logic, and RBF/locktime support",
+      "Reproduced MultiHaluDet (ACL 2026 workshop), which detects LLM hallucinations by probing a frozen model's hidden states: matched its HaluEval result on Mistral-7B (AUROC 0.985 vs. 0.984 reported), then extended it to Qwen2.5-7B, Phi-3.5-mini and Yi-1.5-9B. All four scored 0.985–0.989; the 3.8B Phi-3.5 matched the 7–9B models at half the GPU memory.",
+      "Found a validation bug in the released code: a cross-validation seed collision inverted the meta-learner's predictions (AUROC 0.015); decorrelating the folds restored out-of-fold AUROC from 0.41 to 0.98. Added failure accounting and feature health checks so an incompatible model fails loudly instead of producing plausible-looking scores.",
+      "Probe residual-stream activations of frozen Gemma models with linear and difference-in-means probes, using PyTorch, TransformerLens, SAELens and Gemma Scope.",
     ],
   },
   {
-    title: "Back End Developer Intern",
+    title: "Backend Developer Intern",
     company: "TerraBiz",
     location: "Remote",
     period: "Feb 2025 – Aug 2025",
     description: [
-      "Developed scalable RESTful APIs using Node.js and Express.js for web applications",
-      "Designed and optimized MongoDB database schemas, enhancing data security",
-      "Collaborated with cross-functional teams to integrate backend logic, improving system efficiency",
+      "Built and deployed production REST APIs in Node.js and Express.js.",
+      "Reduced query latency by restructuring MongoDB schemas and adding targeted indexes.",
     ],
   },
+];
+
+const achievements = [
   {
-    title: "Tech Coordinator",
-    company: "CodeSoc - DSA Club, IIIT Raichur",
-    location: "IIIT Raichur",
-    period: "2023 – 2025",
-    description: [
-      "Mentored 150+ students in Data Structures, Algorithms, and Competitive Programming",
-      "Organized Code Conflux Hackathon, showcasing innovative student projects",
-      "Conducted the InterIIIT hackathon round-1 UDBHAV organized by IIIT Sricity",
-    ],
+    title: "Summer of Bitcoin 2026",
+    href: "https://www.summerofbitcoin.org/",
+    text: "Selected for the Summer of Bitcoin 2026 developer challenge round, a global open-source program; built a Bitcoin transaction analyser and a BIP-174 PSBT builder.",
+  },
+  {
+    title: "Tech Coordinator, CodeSoc, IIIT Raichur (2024–2025)",
+    text: "Mentored 150+ students in data structures and algorithms; organised the Code Conflux hackathon and the InterIIIT UDBHAV round.",
   },
 ];
 
@@ -108,11 +119,48 @@ const Experience = () => {
                       </li>
                     ))}
                   </ul>
+
+                  {exp.link && (
+                    <a
+                      href={exp.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-muted/50 hover:bg-primary/20 border border-primary/30 hover:border-primary rounded-lg text-xs sm:text-sm text-foreground hover:text-primary transition-all duration-300"
+                    >
+                      <Github size={14} />
+                      {exp.link.label}
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 md:pl-20"
+        >
+          <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4">
+            Achievements and Leadership
+          </h3>
+          <ul className="space-y-3">
+            {achievements.map((item) => (
+              <li key={item.title} className="glass-card p-4 sm:p-5 text-sm sm:text-base text-muted-foreground">
+                {item.href ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-secondary font-medium hover:underline">
+                    {item.title}
+                  </a>
+                ) : (
+                  <span className="text-secondary font-medium">{item.title}</span>
+                )}
+                <span className="block mt-1">{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       </div>
     </section>
   );

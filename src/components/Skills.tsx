@@ -1,36 +1,32 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+// Kept in sync with the "Technical Skills" section of the resume.
 const skillCategories = [
   {
-    title: "Programming",
-    skills: ["C", "C++", "Python", "JavaScript", "TypeScript"],
+    title: "Languages",
+    skills: ["Python", "SQL", "C++"],
     color: "primary",
   },
   {
-    title: "Technologies",
-    skills: ["Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Socket.io", "REST APIs"],
+    title: "ML and Deep Learning",
+    skills: ["PyTorch", "Hugging Face Transformers", "scikit-learn", "NumPy", "pandas"],
     color: "secondary",
   },
   {
-    title: "AI/ML",
-    skills: ["Machine Learning", "MLflow", "FastAPI", "YOLOv8", "OCR", "OpenCV", "Scikit-learn", "NumPy", "Pandas"],
+    title: "Interpretability and Evaluation",
+    skills: ["TransformerLens", "SAELens", "Gemma Scope", "Linear and difference-in-means probing", "Residual-stream analysis", "Hallucination detection", "AUROC / F1 / IoU evaluation", "pytest"],
     color: "primary",
   },
   {
-    title: "Agentic Systems",
-    skills: ["LangChain", "LangGraph", "CrewAI", "Multi-Agent Systems", "Groq LLMs", "ChromaDB", "Vector Search", "RAG Pipelines"],
+    title: "LLMs and Agents",
+    skills: ["LangGraph", "LangChain", "CrewAI", "RAG", "ChromaDB", "Vector search", "Gemini vision", "Groq"],
     color: "secondary",
   },
   {
-    title: "Bitcoin Protocol",
-    skills: ["Bitcoin Protocol", "BIP-141 SegWit", "BIP-174 PSBT", "Script Parsing", "Block Parsing", "Coin Selection", "RBF / Locktime"],
+    title: "Engineering and Tools",
+    skills: ["FastAPI", "Django", "REST APIs", "PostgreSQL", "MongoDB", "Git", "GitHub Actions (CI/CD)"],
     color: "primary",
-  },
-  {
-    title: "Tools & Deployment",
-    skills: ["Git", "GitHub", "Postman", "Vercel", "Render"],
-    color: "secondary",
   },
 ];
 
@@ -53,7 +49,7 @@ const Skills = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-start">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}
@@ -87,44 +83,6 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Competitive Programming Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16"
-        >
-          <h3 className="text-xl font-bold text-center mb-8 text-muted-foreground">
-            Competitive Programming
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
-            {[
-              { platform: "LeetCode", problems: "500+", link: "https://leetcode.com/u/Amrita0205/", color: "text-amber-500" },
-              { platform: "Codeforces", problems: "200+", link: "https://codeforces.com/profile/Amrita_0205", color: "text-blue-500" },
-              { platform: "GeeksforGeeks", problems: "200+", link: "#", color: "text-green-500" },
-            ].map((item, index) => (
-              <motion.a
-                key={item.platform}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="glass-card glow-border px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3 sm:gap-4 group"
-              >
-                <span className={`text-xl sm:text-2xl font-bold ${item.color}`}>{item.problems}</span>
-                <div>
-                  <span className="text-foreground font-medium group-hover:text-primary transition-colors">
-                    {item.platform}
-                  </span>
-                  <p className="text-xs text-muted-foreground">problems solved</p>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

@@ -2,131 +2,100 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Github, Youtube } from "lucide-react";
 import thumbnailCareerAdvisor from "@/assets/thumbnail-career-advisor.png";
-import thumbnailNss from "@/assets/thumbnail-nss.png";
-import thumbnailBitLens from "@/assets/thumbnail-bit-lens.png";
-import thumbnailCoinSmith from "@/assets/thumbnail-coin-smith.png";
 import thumbnailBlogAgent from "@/assets/thumbnail-blog-agent.png";
-import thumbnailMlops from "@/assets/thumbnail-mlops.png";
+import thumbnailVeda from "@/assets/thumbnail-veda.jpg";
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  github?: string;
+  demo?: string;
+  live?: string;
+  thumbnail?: string;
+  highlights?: string[];
+  featured: boolean;
+};
+
+// Featured projects are kept word-for-word in sync with the resume
+// (src/assets/Resume.pdf). Other projects carry no claims beyond what the
+// repo shows.
+const projects: Project[] = [
   {
-    title: "Bit Lens — Bitcoin Transaction Autopsy",
+    title: "Veda AI — Assessment Extraction and Answer Mapping",
     description:
-      "Summer of Bitcoin Week 1: A dual-mode Bitcoin transaction analyzer — CLI tool producing machine-checkable JSON reports and a web visualizer that explains Bitcoin transactions to non-technical users with diagrams, value-flow graphs, and plain-English narration.",
-    tech: [
-      "Python",
-      "Bitcoin Protocol",
-      "BIP-141 SegWit",
-      "Script Parsing",
-      "Block Parsing",
-    ],
-    github: "https://github.com/Amrita0205/Summer-of-Bitcoin-week1-BIT-LENS-challenge",
-    demo: "https://www.youtube.com/watch?v=arhDI3FLk-4",
-    thumbnail: thumbnailBitLens,
+      "A deployed vision-LLM pipeline that reads a printed question paper and a handwritten answer sheet, maps every answer to its question, highlights its ink and grades it.",
+    tech: ["Python", "FastAPI", "Gemini", "Next.js", "pytest"],
+    github: "https://github.com/Amrita0205/Extraction-and-Answer-Mapping-Veda-AI",
+    live: "https://extraction-and-answer-mapping-veda-nine.vercel.app",
+    thumbnail: thumbnailVeda,
     highlights: [
-      "Parses raw transactions: inputs, outputs, fees, script types, timelocks, RBF, and SegWit savings",
-      "Block-mode parser supporting Bitcoin Core blk*.dat + rev*.dat files with XOR decode",
-      "Web visualizer with value-flow diagrams, SegWit discount breakdown, and tooltips for beginners",
-    ],
-    featured: true,
-  },
-  {
-    title: "Coin Smith — PSBT Transaction Builder",
-    description:
-      "Summer of Bitcoin Week 2: A safe BIP-174 PSBT transaction builder — selects UTXOs, constructs unsigned Bitcoin transactions, computes dust-safe fees and change, and exports a machine-checkable JSON report with a web UI to visualize the result.",
-    tech: [
-      "Python",
-      "Bitcoin Protocol",
-      "BIP-174 PSBT",
-      "Coin Selection",
-      "RBF / Locktime",
-    ],
-    github: "https://github.com/Amrita0205/Summer-of-Bitcoin-week2-COIN-SMITH-challenge",
-    demo: "https://www.youtube.com/watch?v=UiFWWvqCxC4",
-    thumbnail: thumbnailCoinSmith,
-    highlights: [
-      "Greedy coin selection with accurate vbytes estimation, dust-safe change logic, and fee-boundary handling",
-      "Full RBF, absolute locktime, and anti-fee-sniping construction per BIP-125 and Bitcoin Core behavior",
-      "Web UI visualizing selected inputs, outputs, fee breakdown, warnings, and PSBT export",
+      "Shipped a deployed vision-LLM pipeline (FastAPI, Gemini vision, Next.js) that reads a printed question paper and a handwritten answer sheet, then extracts the questions, maps each answer to its question, highlights its exact ink region and grades it.",
+      "Designed a five-stage mapping ladder (written label, embedded label, IDF-weighted overlap, model adjudication, sequence) so assignment is order-independent: out-of-sequence answers, split sub-parts and page-spanning answers all resolve.",
+      "Debugged a silent failure: a strict length check rejected valid bounding boxes and fell back to plausible-looking whole-page highlights instead of erroring. Snapping boxes to ink took overlap from IoU 0.29 to 0.89 and whole-page fallbacks to 0 of 52 regions; cut page extraction latency from 176s to 2.2s.",
+      "Built a synthetic ground-truth harness (pytest) and a 14-subject evaluation sweep: F1 1.00 extraction on the synthetic sheet, 90% mean extraction coverage across subjects, and 16 of 17 answers correctly mapped on an independently labelled sheet whose 35/40 grade the pipeline matched exactly.",
     ],
     featured: true,
   },
   {
     title: "Agentic AI Career Advisor",
     description:
-      "Multi-agent AI system for personalized career guidance using LangGraph and Groq LLMs, enabling real-time job analysis and candidate feedback. Selected by IIIT Dharwad faculty for collaboration with a perfect 10/10 score.",
-    tech: [
-      "Python",
-      "LangChain",
-      "LangGraph",
-      "Groq",
-      "ChromaDB",
-      "PostgreSQL",
-    ],
+      "Team project (four people): a multi-agent career advisor built on LangGraph.",
+    tech: ["Python", "LangGraph", "LangChain", "ChromaDB", "PostgreSQL", "Groq"],
     github: "https://github.com/anandn1/career-advisor",
     demo: "https://youtu.be/56Xtd1PNetw",
     thumbnail: thumbnailCareerAdvisor,
     highlights: [
-      "Autonomous agents for job-market analysis, resume optimization, skill-gap detection",
-      "Vector-based retrieval using ChromaDB and Gemma 300M embeddings",
-      "Demonstrated all major Agentic capabilities",
+      "Team of four. Wrote the supervisor that orchestrates the LangGraph agents (job-market analysis, skill-gap detection, resume strategy, mock interviews, learning-path planning) over a shared session state, taking the system to a working end-to-end pipeline.",
+      "Advice is grounded with RAG over ChromaDB (embeddinggemma-300m); selected by IIIT Dharwad faculty for research collaboration.",
     ],
     featured: true,
   },
   {
-    title: "Blog Writing AI Agent — Multi-Agent Content Pipeline",
+    title: "Blog Writing Agent — Multi-Agent Content Pipeline",
     description:
-      "A multi-agent CrewAI pipeline with four specialized agents — Researcher, Writer, Editor, and Social Media Manager — that autonomously researches a topic and produces a publication-ready blog post along with Twitter/X and LinkedIn content.",
-    tech: [
-      "Python",
-      "CrewAI",
-      "Groq LLMs",
-      "Multi-Agent Systems",
-      "LLM Orchestration",
-    ],
+      "Four CrewAI agents that research a topic and produce a publication-ready blog post plus social posts.",
+    tech: ["Python", "CrewAI", "Groq", "litellm"],
     github: "https://github.com/Amrita0205/Blog_writing_AI_agent",
     thumbnail: thumbnailBlogAgent,
     highlights: [
-      "Four-agent workflow: research → drafting → editing → social distribution, fully autonomous end to end",
-      "Powered by Groq (llama-3.3-70b-versatile) for fast inference",
-      "Resolved a known litellm/openai dependency conflict in CrewAI for stable local execution",
+      "Built a four-agent CrewAI pipeline (Researcher, Writer, Editor, Social) producing a publication-ready post plus platform variants on Groq llama-3.3-70b; resolved a litellm/openai dependency conflict and added rate-limit retries for stable runs.",
     ],
     featured: true,
   },
   {
-    title: "MLOps Prediction API — End-to-End ML Pipeline",
+    title: "Bit Lens — Bitcoin Transaction Analyser",
     description:
-      "A production-grade ML pipeline with MLflow experiment tracking, a versioned model registry, and a FastAPI REST endpoint for serving predictions — mirroring real-world MLOps infrastructure. Achieved 97.5% test accuracy.",
-    tech: [
-      "Python",
-      "MLflow",
-      "FastAPI",
-      "scikit-learn",
-      "Model Registry",
-      "Uvicorn",
-    ],
+      "Summer of Bitcoin 2026 developer challenge, week 1: a Bitcoin transaction analyser with a CLI that emits machine-checkable JSON and a web visualiser.",
+    tech: ["Python", "Bitcoin", "SegWit"],
+    github: "https://github.com/Amrita0205/Summer-of-Bitcoin-week1-BIT-LENS-challenge",
+    demo: "https://www.youtube.com/watch?v=arhDI3FLk-4",
+    featured: false,
+  },
+  {
+    title: "Coin Smith — PSBT Transaction Builder",
+    description:
+      "Summer of Bitcoin 2026 developer challenge, week 2: a BIP-174 PSBT transaction builder with greedy coin selection and dust-safe change.",
+    tech: ["Python", "Bitcoin", "BIP-174"],
+    github: "https://github.com/Amrita0205/Summer-of-Bitcoin-week2-COIN-SMITH-challenge",
+    demo: "https://www.youtube.com/watch?v=UiFWWvqCxC4",
+    featured: false,
+  },
+  {
+    title: "MLOps Prediction API",
+    description:
+      "MLflow experiment tracking and a model registry behind a FastAPI prediction endpoint, built on the Iris dataset to learn the MLOps workflow.",
+    tech: ["Python", "MLflow", "FastAPI", "scikit-learn"],
     github: "https://github.com/Amrita0205/MLops_prediction_iris_dataset",
-    thumbnail: thumbnailMlops,
-    highlights: [
-      "MLflow experiment tracking with multi-solver comparison (lbfgs, saga, newton-cg)",
-      "Versioned model registry for reproducible promotion from experiment to production",
-      "FastAPI REST endpoint serving the registered model for real-time predictions",
-    ],
-    featured: true,
+    featured: false,
   },
   {
     title: "College NSS Website",
     description:
-      "Full-stack web application to manage student participation hours for NSS events. Features an admin portal for hour allocation and Google authentication integration.",
+      "Web app to track student participation hours for NSS events, with an admin portal for allocating hours and Google sign-in.",
     tech: ["Next.js", "MongoDB", "Google OAuth"],
     demo: "https://youtu.be/GUeC_hvlNzo",
-    thumbnail: thumbnailNss,
-    highlights: [
-      "Hour tracking system based on event participation",
-      "Admin-only portal for hour allocation",
-      "Secure authentication with Google Client",
-    ],
-    featured: true,
+    featured: false,
   },
   {
     title: "LoveNote",
@@ -135,17 +104,12 @@ const projects = [
     tech: ["Node.js", "Express", "MongoDB"],
     github: "https://github.com/Amrita0205/LoveNote",
     live: "https://lovenote.onrender.com",
-    highlights: [
-      "Full CRUD functionality for notes",
-      "Persistent storage with MongoDB",
-      "Deployed to Render for easy sharing"
-    ],
     featured: false,
   },
   {
     title: "Code Conflux Hackathon Website",
     description:
-      "Official website for the Code Conflux Hackathon organized by CodeSoc at IIIT Raichur, showcasing innovative student projects.",
+      "Official website for the Code Conflux Hackathon organized by CodeSoc at IIIT Raichur.",
     tech: ["React", "Tailwind CSS", "Vercel"],
     live: "https://code-conflux-szk5-amrita0205s-projects.vercel.app/",
     featured: false,
@@ -369,6 +333,18 @@ const Projects = () => {
                         >
                           <Github size={14} />
                           <span className="text-xs">Code</span>
+                        </a>
+                      )}
+
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 px-2 py-1 rounded bg-muted/50 hover:bg-red-500/20 text-muted-foreground hover:text-red-400 transition-all"
+                        >
+                          <Youtube size={14} />
+                          <span className="text-xs">Demo</span>
                         </a>
                       )}
 

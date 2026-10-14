@@ -112,6 +112,18 @@ const Navigation = () => {
                   {item.name}
                 </motion.a>
               ))}
+              <motion.a
+                href={ResumePDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.1 }}
+                className="px-6 py-2 border border-primary text-primary rounded-lg text-xl font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resume
+              </motion.a>
             </div>
           </motion.div>
         )}

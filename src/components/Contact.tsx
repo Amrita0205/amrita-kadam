@@ -33,7 +33,7 @@ const Contact = () => {
             {[
               { icon: Mail, label: "Email", value: "amrita0205kadam@gmail.com", href: "mailto:amrita0205kadam@gmail.com" },
               { icon: Phone, label: "Phone", value: "+91-8904220942", href: "tel:+918904220942" },
-              { icon: MapPin, label: "Location", value: "IIIT Raichur, India", href: "#" },
+              { icon: MapPin, label: "Location", value: "Bengaluru, India", href: "#contact" },
             ].map((item, index) => (
               <motion.a
                 key={item.label}
