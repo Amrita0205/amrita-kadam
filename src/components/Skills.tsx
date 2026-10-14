@@ -14,8 +14,8 @@ const skillCategories = [
     color: "secondary",
   },
   {
-    title: "Interpretability and Evaluation",
-    skills: ["TransformerLens", "SAELens", "Gemma Scope", "Linear and difference-in-means probing", "Residual-stream analysis", "Hallucination detection", "AUROC / F1 / IoU evaluation", "pytest"],
+    title: "Evaluation and Probing",
+    skills: ["Hallucination detection", "Hidden-state probing", "Cross-validation", "AUROC / F1 / IoU evaluation", "pytest"],
     color: "primary",
   },
   {
