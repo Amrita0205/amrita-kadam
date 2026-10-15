@@ -18,7 +18,7 @@ const experiences: ExperienceItem[] = [
     title: "Mechanistic Interpretability Research Intern",
     company: "Moleculyst",
     location: "Remote",
-    period: "Jul 2026 – Present",
+    period: "Jul 2026 – Aug 2026",
     link: { label: "Reproduction code and results", href: "https://github.com/Amrita0205/multihaludet-reproduction" },
     description: [
       "Reproduced MultiHaluDet (ACL 2026 workshop), which detects LLM hallucinations by probing a frozen model's hidden states: matched its HaluEval result on Mistral-7B (AUROC 0.985 vs. 0.984 reported), then extended it to Qwen2.5-7B, Phi-3.5-mini and Yi-1.5-9B. All four scored 0.985–0.989; the 3.8B Phi-3.5 matched the 7–9B models at half the GPU memory.",

@@ -1,0 +1,128 @@
+%-------------------------------------------------------------
+% Amrita Kadam - Resume (rebuilt from Resume.pdf, Oct 2026)
+% Compile with pdfLaTeX (Overleaf default works).
+%-------------------------------------------------------------
+\documentclass[letterpaper,10pt]{article}
+
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{\renewcommand{\ttdefault}{pcr}}
+% XCharter (Overleaf/TeX Live) has true small caps; plain Charter does not,
+% so headings fall back to UPPERCASE to keep the PDF text ATS-readable.
+\newif\ifxchar
+\IfFileExists{XCharter.sty}{\usepackage[scaled=0.98]{XCharter}\xchartrue}{\usepackage{charter}}
+\newcommand{\SecCase}[1]{\ifxchar #1\else\MakeUppercase{#1}\fi}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.42in,top=0.4in,bottom=0.4in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{amssymb}
+
+\definecolor{accent}{HTML}{B22222}
+\definecolor{linkgray}{HTML}{3A3A3A}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
+\raggedright
+
+% Section headings: red small caps with a rule
+\titleformat{\section}{\color{accent}\large\bfseries}{}{0pt}{\ifxchar\scshape\fi\SecCase}[\vspace{-11pt}\color{accent}\rule{\linewidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{3pt}{1pt}
+
+\newcommand{\sep}{\hspace{5pt}{\color{accent}|}\hspace{5pt}}
+\newcommand{\lnk}[2]{\href{#1}{\color{linkgray}#2}}
+
+% Entry heading: bold title + right-aligned date, italic subtitle + right-aligned place
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \textbf{#2}\\
+    \small\textit{#3} & \small\textit{#4}\\
+  \end{tabularx}\vspace{-1pt}}
+% Project heading: bold title + date, link line beneath
+\newcommand{\project}[3]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \textbf{#2}\\
+    \small #3 & \\
+  \end{tabularx}\vspace{-1pt}}
+
+\setlist[itemize]{leftmargin=0.25in,label=--,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+\newenvironment{bullets}{\begin{itemize}\small}{\end{itemize}\vspace{1pt}}
+
+\begin{document}
+
+%---------- Header ----------
+\begin{center}
+  {\LARGE\bfseries\ifxchar\scshape Amrita Kadam\else AMRITA KADAM\fi}\\[2pt]
+  \textcolor{accent}{\rule{\linewidth}{0.6pt}}\\[1pt]
+  \small Bengaluru, India \sep +91-8904220942 \sep \lnk{mailto:amrita0205kadam@gmail.com}{amrita0205kadam@gmail.com}\\
+  \lnk{https://github.com/Amrita0205}{github.com/Amrita0205} \sep
+  \lnk{https://www.linkedin.com/in/amrita-kadam-2a293b287}{linkedin.com/in/amrita-kadam-2a293b287} \sep
+  \lnk{https://amrita-kadam.vercel.app/}{amrita-kadam.vercel.app}
+\end{center}
+\vspace{-12pt}
+
+%---------- Education ----------
+\section{Education}
+\entry{Indian Institute of Information Technology, Raichur}{Expected Aug 2027}{B.Tech in Computer Science and Engineering}{Raichur, India}
+\begin{bullets}
+  \item \textbf{Mathematics:} Probability and Statistics, Linear Algebra, Calculus (Engineering Mathematics I--III), Discrete Mathematics.
+  \item \textbf{Machine Learning:} Foundations of Machine Learning, Deep Learning, Natural Language Processing, Agentic AI. \textbf{Computing:} Data Structures and Algorithms.
+\end{bullets}
+
+%---------- Experience ----------
+\section{Experience}
+\entry{Moleculyst}{Jul 2026 -- Aug 2026}{Mechanistic Interpretability Research Intern \sep \lnk{https://github.com/Amrita0205/multihaludet-reproduction}{github.com/Amrita0205/multihaludet-reproduction}}{Remote}
+\begin{bullets}
+  \item Reproduced \textbf{MultiHaluDet} (ACL 2026 workshop), which detects \textbf{LLM hallucinations} by probing a frozen model's hidden states: matched its HaluEval result on Mistral-7B (\textbf{AUROC 0.985} vs.\ 0.984 reported), then extended it to \textbf{Qwen2.5-7B, Phi-3.5-mini and Yi-1.5-9B}. All four scored 0.985--0.989; the 3.8B Phi-3.5 matched the 7--9B models at half the GPU memory.
+  \item \textbf{Found a validation bug} in the released code: a cross-validation seed collision \textbf{inverted the meta-learner's predictions} (AUROC 0.015); decorrelating the folds restored out-of-fold AUROC from 0.41 to 0.98. Added failure accounting and feature health checks so an incompatible model fails loudly instead of producing plausible-looking scores.
+  \item Wrote a \textbf{GPU meta-learner} that trains in \textbf{51\,s} vs.\ $\sim$\textbf{50\,min} for the original ensemble, so many LLMs can be compared.
+\end{bullets}
+
+\entry{TerraBiz}{Feb 2025 -- Aug 2025}{Backend Developer Intern}{Remote}
+\begin{bullets}
+  \item Built and deployed \textbf{production REST APIs} in Node.js and Express.js.
+  \item Reduced query latency by restructuring \textbf{MongoDB} schemas and adding targeted indexes.
+\end{bullets}
+
+%---------- Projects ----------
+\section{Projects}
+\project{Veda AI --- Assessment Extraction and Answer Mapping}{2026}{\lnk{https://github.com/Amrita0205/Extraction-and-Answer-Mapping-Veda-AI}{github.com/Amrita0205/Extraction-and-Answer-Mapping-Veda-AI} \sep \lnk{https://extraction-and-answer-mapping-veda-nine.vercel.app}{Live app}}
+\begin{bullets}
+  \item Shipped a \textbf{deployed vision-LLM pipeline} (\textbf{FastAPI}, \textbf{Gemini} vision, Next.js) that reads a printed question paper and a handwritten answer sheet, then extracts the questions, maps each answer to its question, highlights its exact ink region and grades it.
+  \item Designed a \textbf{five-stage mapping ladder} (written label, embedded label, IDF-weighted overlap, model adjudication, sequence) so assignment is \textbf{order-independent}: out-of-sequence answers, split sub-parts and page-spanning answers all resolve.
+  \item \textbf{Debugged a silent failure}: a strict length check rejected valid bounding boxes and fell back to plausible-looking whole-page highlights instead of erroring. Snapping boxes to ink took overlap from \textbf{IoU 0.29 to 0.89} and whole-page fallbacks to \textbf{0 of 52 regions}; cut page extraction latency from \textbf{176s to 2.2s}.
+  \item Built a \textbf{synthetic ground-truth harness} (pytest) and a \textbf{14-subject evaluation sweep}: \textbf{F1 1.00} extraction on the synthetic sheet, \textbf{90\% mean extraction coverage} across subjects, and \textbf{16 of 17} answers correctly mapped on an independently labelled sheet whose \textbf{35/40 grade the pipeline matched exactly}.
+\end{bullets}
+
+\project{Agentic AI Career Advisor}{Nov 2025}{\lnk{https://github.com/anandn1/career-advisor}{github.com/anandn1/career-advisor} \sep \lnk{https://youtu.be/56Xtd1PNetw}{youtu.be/56Xtd1PNetw}}
+\begin{bullets}
+  \item Team of four. Wrote the \textbf{supervisor} that orchestrates the \textbf{LangGraph} agents (job-market analysis, skill-gap detection, resume strategy, mock interviews, learning-path planning) over a shared session state, taking the system to a working end-to-end pipeline.
+  \item Advice is grounded with \textbf{RAG} over \textbf{ChromaDB} (embeddinggemma-300m); selected by \textbf{IIIT Dharwad faculty} for research collaboration.
+\end{bullets}
+
+\project{Blog Writing Agent --- Multi-Agent Content Pipeline}{2026}{\lnk{https://github.com/Amrita0205/Blog_writing_AI_agent}{github.com/Amrita0205/Blog\_writing\_AI\_agent}}
+\begin{bullets}
+  \item Built a four-agent \textbf{CrewAI} pipeline (Researcher, Writer, Editor, Social) producing a publication-ready post plus platform variants on \textbf{Groq llama-3.3-70b}; resolved a \texttt{litellm}/\texttt{openai} dependency conflict and added rate-limit retries for stable runs.
+\end{bullets}
+
+%---------- Achievements ----------
+\section{Achievements and Leadership}
+\begin{itemize}[label=\textbullet,leftmargin=0.15in]\small
+  \item Selected for the \lnk{https://www.summerofbitcoin.org/}{\textbf{Summer of Bitcoin}} 2026 developer challenge round, a global open-source program; built a Bitcoin transaction analyser and a BIP-174 PSBT builder.
+  \item \textbf{Tech Coordinator, CodeSoc, IIIT Raichur} (2024--2025): mentored 150+ students in data structures and algorithms; organised the Code Conflux hackathon and the InterIIIT UDBHAV round.
+\end{itemize}
+
+%---------- Skills ----------
+\section{Technical Skills}
+\begin{itemize}[label={},leftmargin=0.15in]\small
+  \item \textbf{Languages:} \textbf{Python}, SQL, C++
+  \item \textbf{ML and Deep Learning:} \textbf{PyTorch}, \textbf{Hugging Face Transformers}, NLP, scikit-learn, NumPy, pandas
+  \item \textbf{Evaluation and Probing:} \textbf{hallucination detection}, \textbf{hidden-state probing}, cross-validation, AUROC / F1 / IoU evaluation, pytest
+  \item \textbf{LLMs and Agents:} \textbf{LangGraph}, LangChain, CrewAI, \textbf{RAG}, ChromaDB, vector search, Gemini vision, Groq
+  \item \textbf{Engineering and Tools:} FastAPI, Django, REST APIs, PostgreSQL, MongoDB, Git, GitHub Actions (CI/CD)
+\end{itemize}
+
+\end{document}

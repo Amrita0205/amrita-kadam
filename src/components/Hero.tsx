@@ -51,7 +51,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-6 md:mb-8 text-base md:text-lg"
             >
-              Final-year B.Tech CSE student at IIIT Raichur and{" "}
+              Final-year B.Tech CSE student at IIIT Raichur, previously a{" "}
               <span className="text-primary">mechanistic interpretability research intern</span> at
               Moleculyst. I work on{" "}
               <span className="text-primary">LLM hallucination detection</span>,{" "}

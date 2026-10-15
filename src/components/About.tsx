@@ -39,12 +39,12 @@ const About = () => {
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
               I'm a final-year Computer Science student at{" "}
               <span className="text-primary font-medium">IIIT Raichur</span>{" "}
-              (graduating August 2027) and a{" "}
+              (graduating August 2027). Most recently I was a{" "}
               <span className="text-secondary font-medium">
                 mechanistic interpretability research intern at Moleculyst
               </span>
-              , where I reproduce published LLM hallucination-detection methods
-              and test whether they hold up on other open models.
+              {" "}(Jul–Aug 2026), where I reproduced published LLM hallucination-detection
+              methods and tested whether they hold up on other open models.
             </p>
 
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">

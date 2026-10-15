@@ -13,10 +13,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Amrita Kadam | ML Research Intern</title>
+        <title>Amrita Kadam | AI/ML Research Portfolio</title>
         <meta
           name="description"
-          content="Amrita Kadam: final-year B.Tech CSE student at IIIT Raichur and mechanistic interpretability research intern at Moleculyst. LLM hallucination detection, evaluation and multi-agent systems."
+          content="Amrita Kadam: final-year B.Tech CSE student at IIIT Raichur, previously a mechanistic interpretability research intern at Moleculyst. LLM hallucination detection, evaluation and multi-agent systems."
         />
       </Helmet>
 
