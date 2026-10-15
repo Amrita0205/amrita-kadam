@@ -59,6 +59,15 @@ const Hero = () => {
               <span className="text-primary">multi-agent systems</span>.
             </motion.p>
 
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="text-sm md:text-base font-medium text-secondary mb-6 md:mb-8"
+            >
+              Open to Applied Scientist and AI/ML research internships, from now or January 2027.
+            </motion.p>
+
             {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -4,6 +4,7 @@ import { ExternalLink, Github, Youtube } from "lucide-react";
 import thumbnailCareerAdvisor from "@/assets/thumbnail-career-advisor.png";
 import thumbnailBlogAgent from "@/assets/thumbnail-blog-agent.png";
 import thumbnailVeda from "@/assets/thumbnail-veda.jpg";
+import thumbnailMultiHaluDet from "@/assets/thumbnail-multihaludet.jpg";
 
 type Project = {
   title: string;
@@ -21,6 +22,20 @@ type Project = {
 // (src/assets/Resume.pdf). Other projects carry no claims beyond what the
 // repo shows.
 const projects: Project[] = [
+  {
+    title: "MultiHaluDet — Reproduction and Multi-Model Extension",
+    description:
+      "Reproduced an ACL 2026 workshop method that detects LLM hallucinations by probing a frozen model's hidden states, then extended it to three more model families.",
+    tech: ["Python", "PyTorch", "Hugging Face Transformers", "scikit-learn"],
+    github: "https://github.com/Amrita0205/multihaludet-reproduction",
+    thumbnail: thumbnailMultiHaluDet,
+    highlights: [
+      "Reproduced MultiHaluDet (ACL 2026 workshop), which detects LLM hallucinations by probing a frozen model's hidden states: matched its HaluEval result on Mistral-7B (AUROC 0.985 vs. 0.984 reported), then extended it to Qwen2.5-7B, Phi-3.5-mini and Yi-1.5-9B. All four scored 0.985–0.989; the 3.8B Phi-3.5 matched the 7–9B models at half the GPU memory.",
+      "Found a validation bug in the released code: a cross-validation seed collision inverted the meta-learner's predictions (AUROC 0.015); decorrelating the folds restored out-of-fold AUROC from 0.41 to 0.98. Added failure accounting and feature health checks so an incompatible model fails loudly instead of producing plausible-looking scores.",
+      "Wrote a GPU meta-learner that trains in 51 s vs. ~50 min for the original ensemble, so many LLMs can be compared.",
+    ],
+    featured: true,
+  },
   {
     title: "Veda AI — Assessment Extraction and Answer Mapping",
     description:
@@ -79,39 +94,6 @@ const projects: Project[] = [
     tech: ["Python", "Bitcoin", "BIP-174"],
     github: "https://github.com/Amrita0205/Summer-of-Bitcoin-week2-COIN-SMITH-challenge",
     demo: "https://www.youtube.com/watch?v=UiFWWvqCxC4",
-    featured: false,
-  },
-  {
-    title: "MLOps Prediction API",
-    description:
-      "MLflow experiment tracking and a model registry behind a FastAPI prediction endpoint, built on the Iris dataset to learn the MLOps workflow.",
-    tech: ["Python", "MLflow", "FastAPI", "scikit-learn"],
-    github: "https://github.com/Amrita0205/MLops_prediction_iris_dataset",
-    featured: false,
-  },
-  {
-    title: "College NSS Website",
-    description:
-      "Web app to track student participation hours for NSS events, with an admin portal for allocating hours and Google sign-in.",
-    tech: ["Next.js", "MongoDB", "Google OAuth"],
-    demo: "https://youtu.be/GUeC_hvlNzo",
-    featured: false,
-  },
-  {
-    title: "LoveNote",
-    description:
-      "Simple CRUD notes web app — create, read, update and delete notes. Deployed on Render.",
-    tech: ["Node.js", "Express", "MongoDB"],
-    github: "https://github.com/Amrita0205/LoveNote",
-    live: "https://lovenote.onrender.com",
-    featured: false,
-  },
-  {
-    title: "Code Conflux Hackathon Website",
-    description:
-      "Official website for the Code Conflux Hackathon organized by CodeSoc at IIIT Raichur.",
-    tech: ["React", "Tailwind CSS", "Vercel"],
-    live: "https://code-conflux-szk5-amrita0205s-projects.vercel.app/",
     featured: false,
   },
 ];

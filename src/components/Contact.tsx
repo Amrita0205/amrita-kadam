@@ -18,8 +18,8 @@ const Contact = () => {
           <p className="text-primary font-mono text-xs sm:text-sm mb-2">05. What's Next?</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-base sm:text-lg px-2">
-            I'm currently looking for new opportunities and my inbox is always open. 
-            Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            I'm looking for Applied Scientist and AI/ML research internships of about six
+            months, starting now or from January 2027. Email is the fastest way to reach me.
           </p>
         </motion.div>
 

@@ -10,7 +10,7 @@ const skillCategories = [
   },
   {
     title: "ML and Deep Learning",
-    skills: ["PyTorch", "Hugging Face Transformers", "scikit-learn", "NumPy", "pandas"],
+    skills: ["PyTorch", "Hugging Face Transformers", "NLP", "scikit-learn", "NumPy", "pandas"],
     color: "secondary",
   },
   {
